@@ -16,6 +16,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var cellAvatar: UIImageView!
     @IBOutlet weak var addToFaritesTag: UIButton!
+    @IBOutlet weak var deleteFromFavoritesTag: UIButton!
     
 
     
@@ -23,6 +24,8 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabelTop: NSLayoutConstraint!
     @IBOutlet weak var rankLabelTop: NSLayoutConstraint!
     @IBOutlet weak var typeLabelTop: NSLayoutConstraint!
+    
+    var selectedSegmentControl: String?
     
 
     
@@ -42,6 +45,17 @@ class CustomTableViewCell: UITableViewCell {
             durationLabelTop.constant = 0
         } else {
             self.heartButtonWidth.constant = 30
+        }
+        if selectedSegmentControl == "Favorites" {
+            self.addToFaritesTag.isHidden = true
+            self.addToFaritesTag.isEnabled = false
+            self.deleteFromFavoritesTag.isHidden = false
+            self.deleteFromFavoritesTag.isEnabled = true
+        } else {
+            self.addToFaritesTag.isHidden = false
+            self.addToFaritesTag.isEnabled = true
+            self.deleteFromFavoritesTag.isHidden = true
+            self.deleteFromFavoritesTag.isEnabled = false
         }
     }
     

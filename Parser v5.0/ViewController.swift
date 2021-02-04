@@ -13,9 +13,17 @@ class ViewController: UIViewController {
     @IBAction func segmentControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
+            self.activeSG = "Start"
+            self.clearData = [AllInfo]()
+            self.getData(task: .getAllGenres)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             self.searchBar.isHidden = true
             self.heightSearchBar.constant = 0
+            
         case 1:
+            self.activeSG = "Search"
             self.clearData = [AllInfo]()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -23,14 +31,24 @@ class ViewController: UIViewController {
             
             self.searchBar.isHidden = false
             self.heightSearchBar.constant = 50
+            
         case 2:
+            self.activeSG = "Favorites"
+            self.stepCounter = 2
             self.clearData = [AllInfo]() // вместо массива AllInfo брать массив из кэша
+            self.getFavoritesData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             self.searchBar.isHidden = true
             self.heightSearchBar.constant = 0
+            
+            
         default:
             print("default")
         }
     }
+    private var activeSG = ""
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
@@ -129,6 +147,13 @@ class ViewController: UIViewController {
             }
         }
     }
+    func getFavoritesData() {
+      if let storedData = UserDefaults.standard.object(forKey: "favorites") as? Data,
+         let favoritesRepo = try? PropertyListDecoder().decode([AllInfo].self, from: storedData) {
+        self.clearData = favoritesRepo
+      } else {self.clearData.removeAll()}
+      self.tableView.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -141,6 +166,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setModel(with: self.clearData[indexPath.row])
             cell.addToFaritesTag.tag = indexPath.row
             cell.addToFaritesTag.addTarget(self, action: #selector(addToFavorites(_:)), for: .touchUpInside)
+            cell.deleteFromFavoritesTag.tag = indexPath.row
+            cell.deleteFromFavoritesTag.addTarget(self, action: #selector(deleteFromFavorites(_:)), for: .touchUpInside)
+            
+            cell.selectedSegmentControl = self.activeSG
             return cell
         }
         return UITableViewCell()
@@ -154,8 +183,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func addToFavorites(_ sender: UIButton?) {
 //        print(sender!.tag)
         if let index = sender?.tag, self.clearData.indices.contains(index) {
-            print("Такое есть! можно добавить")
-//            self.clearData[index].putObjectToUserDefaults()
+            let alert = UIAlertController(title: "Подтвердите действие", message: "Вы действительно хотите добавить песню?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                print("Yes, I want to add it \(self.clearData[index])")
+                // код добавления тут
+                self.clearData[index].putObjectToUserDefaults()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                print("NO, I just want to try it! \(self.clearData[index])")
+                // можно заменить замыкание на nil
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    @objc func deleteFromFavorites(_ sender: UIButton?) {
+        if let index = sender?.tag, var storedData = UserDefaults.standard.object(forKey: "favorites") as? Data, storedData.indices.contains(index) {
+            print("I can delete it")
+            dump(UserDefaults.standard.object(forKey: "favorites") as? Data)
+            storedData.remove(at: index)
+//            UserDefaults.standard.object(forKey: "favorites")
+            print(storedData)
+            self.tableView.reloadData()
         }
     }
     

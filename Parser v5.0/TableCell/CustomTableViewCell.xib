@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,6 +47,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jN-6W-oHV">
+                        <rect key="frame" x="383" y="0.0" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Zmi-X7-aVJ"/>
+                            <constraint firstAttribute="height" constant="30" id="sLW-av-vZu"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" image="trash.fill" catalog="system"/>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRx-IQ-gwC">
                         <rect key="frame" x="383" y="0.0" width="30" height="30"/>
                         <constraints>
@@ -65,6 +75,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="T7D-TT-bTR" secondAttribute="trailing" constant="10" id="0jf-Kr-5iv"/>
                     <constraint firstItem="gAX-7Q-6o1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3Px-tH-uF0"/>
+                    <constraint firstItem="4jN-6W-oHV" firstAttribute="leading" secondItem="CGB-gu-Ycf" secondAttribute="trailing" constant="10" id="Lis-Ch-Wfa"/>
                     <constraint firstAttribute="trailing" secondItem="q58-27-hAt" secondAttribute="trailing" constant="10" id="OVa-gr-Hy3"/>
                     <constraint firstItem="gAX-7Q-6o1" firstAttribute="top" secondItem="e99-HH-Zfr" secondAttribute="bottom" constant="10" id="WD9-En-uBe"/>
                     <constraint firstItem="e99-HH-Zfr" firstAttribute="bottom" secondItem="CGB-gu-Ycf" secondAttribute="bottom" id="ZlC-0B-SkI"/>
@@ -72,9 +83,11 @@
                     <constraint firstItem="T8i-sK-JM3" firstAttribute="top" secondItem="CGB-gu-Ycf" secondAttribute="top" id="cZs-IW-zEZ"/>
                     <constraint firstItem="VRx-IQ-gwC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dDE-tg-e15"/>
                     <constraint firstItem="e99-HH-Zfr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="eCL-KM-HVs"/>
+                    <constraint firstAttribute="trailing" secondItem="4jN-6W-oHV" secondAttribute="trailing" id="gIX-dU-XFM"/>
                     <constraint firstItem="q58-27-hAt" firstAttribute="top" secondItem="CGB-gu-Ycf" secondAttribute="bottom" constant="10" id="jhO-iD-kF9"/>
                     <constraint firstAttribute="bottom" secondItem="T7D-TT-bTR" secondAttribute="bottom" constant="10" id="kbo-Rt-cKl"/>
                     <constraint firstItem="T7D-TT-bTR" firstAttribute="top" secondItem="q58-27-hAt" secondAttribute="bottom" constant="10" id="l14-CS-31B"/>
+                    <constraint firstItem="4jN-6W-oHV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="r9P-bg-hrI"/>
                     <constraint firstAttribute="trailing" secondItem="VRx-IQ-gwC" secondAttribute="trailing" id="waH-DR-vBa"/>
                     <constraint firstItem="VRx-IQ-gwC" firstAttribute="leading" secondItem="CGB-gu-Ycf" secondAttribute="trailing" constant="10" id="wbJ-Ld-1mR"/>
                     <constraint firstItem="CGB-gu-Ycf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="zSz-Hr-oFF"/>
@@ -84,6 +97,7 @@
             <connections>
                 <outlet property="addToFaritesTag" destination="VRx-IQ-gwC" id="Waj-aU-mKI"/>
                 <outlet property="cellAvatar" destination="CGB-gu-Ycf" id="zcU-LF-cAM"/>
+                <outlet property="deleteFromFavoritesTag" destination="4jN-6W-oHV" id="FeK-LI-Mg9"/>
                 <outlet property="durationLabel" destination="T7D-TT-bTR" id="3KT-uo-efq"/>
                 <outlet property="durationLabelTop" destination="l14-CS-31B" id="Zyj-Tx-N2d"/>
                 <outlet property="heartButtonWidth" destination="agG-8r-xsG" id="ro8-Tk-orP"/>
@@ -100,5 +114,9 @@
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
