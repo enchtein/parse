@@ -9,6 +9,9 @@ import UIKit
 import Kingfisher
 
 class CustomTableViewCell: UITableViewCell {
+    var delegateCell: SomeCellProtocol?
+    var row: Int?
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -88,6 +91,18 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let iTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
+        iTap.numberOfTapsRequired = 1
+        self.cellAvatar.addGestureRecognizer(iTap)
+        self.cellAvatar.isUserInteractionEnabled = true
+    }
+    @objc func imageTapped(sender: UIGestureRecognizer) {
+//        print(self.cellAvatar)
+        let row = self.addToFaritesTag.tag
+//        print(row)
+        delegateCell?.imageTapped(row: row)
+//        let vc = self.
+        print("image was tapped")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -96,4 +111,9 @@ class CustomTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+
+protocol SomeCellProtocol {
+    func imageTapped(row: Int)
 }

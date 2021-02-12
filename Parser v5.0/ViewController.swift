@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     
     private var repositoryDataSource = GetData()
     private var clearData = [AllInfo]()
+    private var clearDataDelegate: AllInfo?
     private var songData: AllInfo?
     
     private var searchTimer: Timer?
@@ -168,6 +169,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.addToFaritesTag.addTarget(self, action: #selector(addToFavorites(_:)), for: .touchUpInside)
             cell.deleteFromFavoritesTag.tag = indexPath.row
             cell.deleteFromFavoritesTag.addTarget(self, action: #selector(deleteFromFavorites(_:)), for: .touchUpInside)
+            
+            cell.delegateCell = self
             
             cell.selectedSegmentControl = self.activeSG
             return cell
@@ -262,4 +265,17 @@ extension ViewController: UISearchBarDelegate {
       })
     }
   }
+}
+
+
+extension ViewController: SomeCellProtocol {
+    func imageTapped(row: Int) {
+        print("From ViewController", row)
+        self.clearDataDelegate = self.clearData[row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ImageViewController") as? ImageViewController {
+            vc.clearDataDelegate = self.clearDataDelegate
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+
 }

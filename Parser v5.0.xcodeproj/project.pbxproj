@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		5F1A38D425C5CA880042466F /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1A38D225C5CA880042466F /* CustomCollectionViewCell.swift */; };
 		5F1A38D525C5CA880042466F /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A38D325C5CA880042466F /* CustomCollectionViewCell.xib */; };
 		5F1A38DA25C5D0D70042466F /* Deezer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1A38D925C5D0D70042466F /* Deezer.swift */; };
+		5F22E8E125D6045F0001C764 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22E8DF25D6045F0001C764 /* ImageViewController.swift */; };
+		5F22E8E525D604A80001C764 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22E8E425D604A80001C764 /* ImageScrollView.swift */; };
 		DE0D1FACCF4142CD5D23A0BD /* Pods_Parser_v5_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D718C9F46849ECA3480A7C /* Pods_Parser_v5_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		5F1A38D225C5CA880042466F /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F1A38D325C5CA880042466F /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		5F1A38D925C5D0D70042466F /* Deezer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deezer.swift; sourceTree = "<group>"; };
+		5F22E8DF25D6045F0001C764 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		5F22E8E425D604A80001C764 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		FD35D8AE771E478001D8FA4D /* Pods-Parser v5.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parser v5.0.release.xcconfig"; path = "Target Support Files/Pods-Parser v5.0/Pods-Parser v5.0.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +83,7 @@
 				5F1A38B525C5C6960042466F /* AppDelegate.swift */,
 				5F1A38B725C5C6960042466F /* SceneDelegate.swift */,
 				5F1A38B925C5C6960042466F /* ViewController.swift */,
+				5F22E8DD25D603FE0001C764 /* ImageScrollView */,
 				5F1A38BB25C5C6960042466F /* Main.storyboard */,
 				5F1A38BE25C5C69F0042466F /* Assets.xcassets */,
 				5F1A38C025C5C69F0042466F /* LaunchScreen.storyboard */,
@@ -113,13 +118,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5F22E8DD25D603FE0001C764 /* ImageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5F22E8DF25D6045F0001C764 /* ImageViewController.swift */,
+				5F22E8E425D604A80001C764 /* ImageScrollView.swift */,
+			);
+			path = ImageScrollView;
+			sourceTree = "<group>";
+		};
 		CA9ECF666C10072AA89A2187 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				0B058D024D6216C8CAA9AE13 /* Pods-Parser v5.0.debug.xcconfig */,
 				FD35D8AE771E478001D8FA4D /* Pods-Parser v5.0.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -250,7 +263,9 @@
 				5F1A38DA25C5D0D70042466F /* Deezer.swift in Sources */,
 				5F1A38BA25C5C6960042466F /* ViewController.swift in Sources */,
 				5F1A38D425C5CA880042466F /* CustomCollectionViewCell.swift in Sources */,
+				5F22E8E125D6045F0001C764 /* ImageViewController.swift in Sources */,
 				5F1A38B625C5C6960042466F /* AppDelegate.swift in Sources */,
+				5F22E8E525D604A80001C764 /* ImageScrollView.swift in Sources */,
 				5F1A38CE25C5CA650042466F /* CustomTableViewCell.swift in Sources */,
 				5F1A38B825C5C6960042466F /* SceneDelegate.swift in Sources */,
 			);
